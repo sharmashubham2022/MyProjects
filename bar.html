@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <script type="text/javascript">
+  window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContainer",
+    {
+      title:{
+        text: "Home Team score vs Away Team score"
+      },
+      data: [
+      {
+        type: "bar",
+        dataPoints: [
+        { y: 10, label: "Scotland"},
+        { y: 9, label: "China"},
+        { y: 4, label: "France"},
+        { y: 7, label: "Brazil"},
+        { y: 2, label: "England"},
+        { y: 7, label: "Wales"},
+        { y: 6, label: "United States"},
+        { y: 2, label: "Republic of Ireland"},
+        { y: 1, label: "Argentina"},
+        { y: 8, label: "Uruguay"},
+        { y: 3, label: "Netherlands"},
+        { y: 10, label: "Chile"},
+        { y: 5, label: "Austria"},
+        { y: 2, label: "Japan"},
+        { y: 3, label: "India"}
+        ]
+      },
+      {
+        type: "bar",
+        dataPoints: [
+        { y: 1, label: "Scotland"},
+        { y: 4, label: "China"},
+        { y: 9, label: "France"},
+        { y: 7, label: "Brazil"},
+        { y: 6, label: "England"},
+        { y: 9, label: "Wales"},
+        { y: 10, label: "United States"},
+        { y: 2, label: "Republic of Ireland"},
+        { y: 1, label: "Argentina"},
+        { y: 6, label: "Uruguay"},
+        { y: 4, label: "Netherlands"},
+        { y: 8, label: "Chile"},
+        { y: 2, label: "Austria"},
+        { y: 4, label: "Japan"},
+        { y: 9, label: "India"},
+        ]
+      }
+      ]
+    });
+
+chart.render();
+}
+</script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script></head>
+<body>
+  <div id="chartContainer" style="height: 650px; width: 100%;">
+  </div>
+</body>
+</html>

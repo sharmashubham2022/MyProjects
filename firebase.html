@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head><link href="http://mottie.github.io/tablesorter/css/theme.default.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
+<script>
+</script>
+</head>
+<body>
+        <table style="width:100%" id="ex-table" class = "tablesorter">
+
+                    <thead>
+                        <tr id="tr">
+                            <th>date</th>
+                            <th>home_team</th>
+                            <th>away_team</th>
+                            <th>home_score</th>
+                            <th>away_score</th>
+                            <th>tournament</th>
+                            <th>city</th>
+                            <th>country</th>
+                            <th>neutral</th>
+                        </tr>
+                    </thead>
+
+
+        </table>
+</body>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCTXA-D8AK_83MFl60WmiM-jrAYRX5-fZA",
+    authDomain: "dm-project-a028d.firebaseapp.com",
+    databaseURL: "https://dm-project-a028d.firebaseio.com",
+    projectId: "dm-project-a028d",
+    storageBucket: "dm-project-a028d.appspot.com",
+    messagingSenderId: "571608985047",
+    appId: "1:571608985047:web:121190d59b2ae5f66baf92",
+    measurementId: "G-ZVQETTXNBB"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  console.log("Initialised");
+
+    var database = firebase.database();
+    database.ref().once('value', function(snapshot){
+        if(snapshot.exists())
+        {
+            var content = '';
+            snapshot.forEach(function(data)
+            {
+                var val = data.val();
+                content +='<tr>';
+                content += '<td>' + val.date + '</td>';
+                content += '<td>' + val.home_team + '</td>';
+                content += '<td>' + val.away_team + '</td>';
+                content += '<td>' + val.home_score + '</td>';
+                content += '<td>' + val.away_score + '</td>';
+                content += '<td>' + val.tournament + '</td>';
+                content += '<td>' + val.city + '</td>';
+                content += '<td>' + val.country + '</td>';
+                content += '<td>' + val.neutral + '</td>';
+                content += '</tr>';
+            });
+
+            $('#ex-table').append(content);
+
+        }
+    });
+
+    $(function(){
+          $("#ex-table").tablesorter({widgets: ['zebra']});
+        });
+
+</script>
+
+</html>
